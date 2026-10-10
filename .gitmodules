@@ -1,0 +1,9 @@
+[submodule "Organic Chemistry"]
+	path = Organic Chemistry
+	url = https://github.com/sweetorange1/Organic-Chemistry.git
+[submodule "Entropy"]
+	path = Entropy
+	url = https://github.com/sweetorange1/Entropy.git
+[submodule "Transcription"]
+	path = Transcription
+	url = https://github.com/sweetorange1/Transcription.git

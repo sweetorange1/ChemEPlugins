@@ -1,0 +1,14 @@
+# 安装包产物
+/dist/
+/.pkg_staging/
+
+# IDE
+/.idea/
+
+# AI 开发辅助（工作区数据，不入库）
+/.codebuddy/
+/.codewiki/
+
+# 系统文件
+Thumbs.db
+.DS_Store
