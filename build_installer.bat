@@ -2,9 +2,9 @@
 setlocal
 
 REM ============================================================
-REM  iisaacbeats Science Series - Combined Installer Builder
+REM  ChemEPlugins - Combined Installer Builder
 REM  Version : 1.2.0
-REM  Output  : dist\iisaacbeats_ScienceSeries_Setup_1.2.0_x64.exe
+REM  Output  : dist\ChemEPlugins_Setup_1.2.0_x64.exe
 REM
 REM  同时打包 ChemE-Organic Chemistry / ChemE-Entropy /
 REM  ChemE-Transcription 三款插件的 VST3 产物，
@@ -15,7 +15,7 @@ REM  （Organic Chemistry 1.x 等）安装的旧插件；三款插件自改名
 REM  起使用新 Plugin Code / Bundle ID，与旧插件在宿主中共存。
 REM ============================================================
 
-set "APP_NAME=iisaacbeats Science Series"
+set "APP_NAME=ChemEPlugins"
 set "APP_VERSION=1.2.0"
 set "SCRIPT_DIR=%~dp0"
 
@@ -25,7 +25,7 @@ REM 待其完成并产出 VST3 后，将此开关置 1 即可一并打包。
 set "INCLUDE_TRANSCRIPTION=0"
 set "ISS_FILE=%SCRIPT_DIR%iisaacbeats_science_series_installer.iss"
 set "DIST_DIR=%SCRIPT_DIR%dist"
-set "OUTPUT_EXE=%DIST_DIR%\iisaacbeats_ScienceSeries_Setup_%APP_VERSION%_x64.exe"
+set "OUTPUT_EXE=%DIST_DIR%\ChemEPlugins_Setup_%APP_VERSION%_x64.exe"
 
 echo ============================================================
 echo  %APP_NAME% Installer Builder  v%APP_VERSION%

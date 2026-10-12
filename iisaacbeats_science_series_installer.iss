@@ -17,7 +17,7 @@
 ;      VST3 UID 与旧插件不同，宿主会视为独立插件，新旧共存。
 ; ============================================================
 
-#define MyAppName "iisaacbeats Science Series"
+#define MyAppName "ChemEPlugins"
 #define MyAppPublisher "iisaacbeats.cn"
 #define MyOcBundle "ChemE-Organic Chemistry.vst3"
 #define MyEntropyBundle "ChemE-Entropy.vst3"
@@ -57,7 +57,7 @@ AppVerName={#MyAppName} {#MyAppVersion}
 AppPublisher={#MyAppPublisher}
 DefaultDirName={commoncf}\VST3\iisaacbeats.cn
 OutputDir=dist
-OutputBaseFilename=iisaacbeats_ScienceSeries_Setup_{#MyAppVersion}_x64
+OutputBaseFilename=ChemEPlugins_Setup_{#MyAppVersion}_x64
 Compression=lzma2
 SolidCompression=yes
 WizardStyle=modern
@@ -73,14 +73,14 @@ DisableDirPage=no
 Name: "english"; MessagesFile: "compiler:Default.isl"
 
 [Types]
-Name: "full"; Description: "完整安装（所有已发布插件）"
-Name: "custom"; Description: "自定义安装"; Flags: iscustom
+Name: "full"; Description: "Full installation (all published plugins)"
+Name: "custom"; Description: "Custom installation"; Flags: iscustom
 
 [Components]
-Name: "organic"; Description: "ChemE-Organic Chemistry — 有机化学合成器 (v{#OC_VERSION})"; Types: full
-Name: "entropy"; Description: "ChemE-Entropy — 物理化学熵退化效果器 (v{#ENTROPY_VERSION})"; Types: full
+Name: "organic"; Description: "ChemE-Organic Chemistry - Organic chemistry synthesizer (v{#OC_VERSION})"; Types: full
+Name: "entropy"; Description: "ChemE-Entropy - Physical chemistry entropy degradation effect (v{#ENTROPY_VERSION})"; Types: full
 #ifdef INCLUDE_TRANSCRIPTION
-Name: "transcription"; Description: "ChemE-Transcription — 生物化学转录合成器 (v{#TRANSCRIPTION_VERSION})"; Types: full
+Name: "transcription"; Description: "ChemE-Transcription - Biochemistry transcription synthesizer (v{#TRANSCRIPTION_VERSION})"; Types: full
 #endif
 
 [Files]
@@ -106,7 +106,7 @@ begin
 
     if (CompareText(RemoveBackslashUnlessRoot(WizardDirValue), RemoveBackslashUnlessRoot(DefaultVst3Path)) <> 0) and (not InstallDirWarningShown) then
     begin
-      MsgBox('你选择了非默认VST3目录。安装完成后，你可能需要在宿主软件(DAW)中手动添加该目录并重新扫描插件，才能正常识别并使用本插件。', mbInformation, MB_OK);
+      MsgBox('You selected a non-default VST3 directory. After installation, you may need to add this directory in your DAW and rescan for the plugins to be detected.', mbInformation, MB_OK);
       InstallDirWarningShown := True;
     end;
   end;

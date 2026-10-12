@@ -38,7 +38,7 @@ SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 APP_VERSION="1.2.0"
 # 生物化学 ChemE-Transcription 尚未开发完成，默认不打包；完成后置 1。
 INCLUDE_TRANSCRIPTION=0
-APP_NAME="iisaacbeats Science Series"
+APP_NAME="ChemEPlugins"
 APP_PUBLISHER="iisaacbeats.cn"
 
 OC_VST3_SRC="${SCRIPT_DIR}/Organic Chemistry/cmake-build-release/OrganicChemistry_artefacts/Release/VST3/ChemE-Organic Chemistry.vst3"
@@ -218,19 +218,19 @@ fi
 cat >> "$DIST_XML" <<XML
         </line>
     </choices-outline>
-    <choice id="default" title="${APP_NAME}" description="${APP_NAME} ${APP_VERSION} — 理科系列插件合集"/>
-    <choice id="organic" visible="true" title="ChemE-Organic Chemistry — 有机化学合成器" description="分子编辑器 Bell 钟声合成器（VST3 + AU）">
+    <choice id="default" title="${APP_NAME}" description="${APP_NAME} ${APP_VERSION} - Chemistry plugin series bundle"/>
+    <choice id="organic" visible="true" title="ChemE-Organic Chemistry - Organic chemistry synthesizer" description="Molecular editor bell synthesizer (VST3 + AU)">
         <pkg-ref id="${OC_VST3_PKG_ID}"/>
         <pkg-ref id="${OC_AU_PKG_ID}"/>
     </choice>
-    <choice id="entropy" visible="true" title="ChemE-Entropy — 物理化学熵退化效果器" description="载体时间轴退化效果器（VST3 + AU）">
+    <choice id="entropy" visible="true" title="ChemE-Entropy - Physical chemistry entropy degradation effect" description="Carrier timeline degradation effect (VST3 + AU)">
         <pkg-ref id="${ENTROPY_VST3_PKG_ID}"/>
         <pkg-ref id="${ENTROPY_AU_PKG_ID}"/>
     </choice>
 XML
 if [ "$INCLUDE_TRANSCRIPTION" = "1" ]; then
 cat >> "$DIST_XML" <<XML
-    <choice id="transcription" visible="true" title="ChemE-Transcription — 生物化学转录合成器" description="基因信息映射声音的减法合成器（VST3 + AU）">
+    <choice id="transcription" visible="true" title="ChemE-Transcription - Biochemistry transcription synthesizer" description="Gene-to-sound subtractive synthesizer (VST3 + AU)">
         <pkg-ref id="${TRANSCRIPTION_VST3_PKG_ID}"/>
         <pkg-ref id="${TRANSCRIPTION_AU_PKG_ID}"/>
     </choice>
@@ -255,32 +255,32 @@ XML
 cat > "$STAGING_DIR/resources/welcome.txt" <<TXT
 ${APP_NAME} ${APP_VERSION}
 
-理科系列插件合集，本安装器包含以下插件：
+Chemistry plugin series bundle. This installer contains the following plugins:
 
-  • ChemE-Organic Chemistry — 分子即音色的 Bell 钟声合成器
-    （VST3 / AU，所有用户共用）
-  • ChemE-Entropy — 物理化学熵退化效果器：选择载体与日期，
-    听时间之箭让声音失序（VST3 / AU，所有用户共用）
+  • ChemE-Organic Chemistry - a bell synthesizer where molecules become timbre
+    (VST3 / AU, shared by all users)
+  • ChemE-Entropy - physical chemistry entropy degradation effect: pick a
+    carrier and date, and hear time's arrow disorder the sound (VST3 / AU)
 TXT
 if [ "$INCLUDE_TRANSCRIPTION" = "1" ]; then
 cat >> "$STAGING_DIR/resources/welcome.txt" <<TXT
-  • ChemE-Transcription — 生物化学转录合成器：以基因信息映射
-    声音（VST3 / AU，所有用户共用）
+  • ChemE-Transcription - biochemistry transcription synthesizer mapping
+    genetic information to sound (VST3 / AU)
 TXT
 fi
 cat >> "$STAGING_DIR/resources/welcome.txt" <<TXT
 
-通用二进制（Universal）：同时支持 Apple Silicon (arm64) 与 Intel (x86_64) Mac。
+Universal binary: supports both Apple Silicon (arm64) and Intel (x86_64) Macs.
 
-您可以在下一步勾选要安装的插件。
+You can choose which plugins to install in the next step.
 
-安装完成后，请在您的 DAW 中重新扫描插件目录。
+After installation, rescan the plugin directory in your DAW.
 
-发布方：${APP_PUBLISHER}
+Publisher: ${APP_PUBLISHER}
 TXT
 
 # ---------- 6) productbuild ----------
-FINAL_PKG="$DIST_DIR/iisaacbeats_ScienceSeries_Setup_${APP_VERSION}_macOS.pkg"
+FINAL_PKG="$DIST_DIR/ChemEPlugins_Setup_${APP_VERSION}_macOS.pkg"
 echo "[INFO] productbuild → 最终安装器..."
 productbuild \
   --distribution "$DIST_XML" \
@@ -294,7 +294,7 @@ echo "[OK] 已生成安装包: $FINAL_PKG"
 
 # ---------- 6.5) 可选签名 ----------
 if [[ -n "$SIGN_IDENTITY" ]]; then
-  SIGNED_PKG="$DIST_DIR/iisaacbeats_ScienceSeries_Setup_${APP_VERSION}_macOS_signed.pkg"
+  SIGNED_PKG="$DIST_DIR/ChemEPlugins_Setup_${APP_VERSION}_macOS_signed.pkg"
   echo "[INFO] productsign → 签名安装器..."
   productsign --sign "$SIGN_IDENTITY" "$FINAL_PKG" "$SIGNED_PKG"
   mv -f "$SIGNED_PKG" "$FINAL_PKG"
@@ -303,21 +303,21 @@ fi
 
 # ---------- 7) 可选 dmg ----------
 if [[ "$MAKE_DMG" == "1" ]]; then
-  FINAL_DMG="$DIST_DIR/iisaacbeats_ScienceSeries_Setup_${APP_VERSION}_macOS.dmg"
+  FINAL_DMG="$DIST_DIR/ChemEPlugins_Setup_${APP_VERSION}_macOS.dmg"
   DMG_STAGING="$STAGING_DIR/dmg"
   rm -rf "$DMG_STAGING"
   mkdir -p "$DMG_STAGING"
   cp "$FINAL_PKG" "$DMG_STAGING/"
 
   cat > "$DMG_STAGING/README.txt" <<TXT
-${APP_NAME} ${APP_VERSION} — macOS 安装说明
+${APP_NAME} ${APP_VERSION} - macOS Installation Notes
 
-1. 双击 iisaacbeats_ScienceSeries_Setup_${APP_VERSION}_macOS.pkg 启动安装器。
-2. 首次运行如遇 Gatekeeper 拦截，请在 系统设置 → 隐私与安全性 中允许运行。
-3. 安装完成后在 DAW 中重新扫描 VST3 / AU 插件目录即可看到已安装的 ChemE 插件。
-4. 本安装包不会卸载旧版插件（Organic Chemistry 1.x 等），新旧插件在宿主中共存。
+1. Double-click ChemEPlugins_Setup_${APP_VERSION}_macOS.pkg to start the installer.
+2. If Gatekeeper blocks the first run, allow it in System Settings > Privacy & Security.
+3. After installation, rescan the VST3 / AU plugin directory in your DAW to see the installed ChemE plugins.
+4. This package does not uninstall older plugins (e.g. Organic Chemistry 1.x); old and new plugins coexist in the host.
 
-发布方：${APP_PUBLISHER}
+Publisher: ${APP_PUBLISHER}
 TXT
 
   rm -f "$FINAL_DMG"
