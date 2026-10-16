@@ -35,7 +35,7 @@ set -euo pipefail
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # 系列安装器版本（与 Windows iss 的 MyAppVersion 一致；三款产品各自版本见其 CMakeLists）
-APP_VERSION="1.2.0"
+APP_VERSION="1.2.1"
 # 生物化学 ChemE-Transcription 尚未开发完成，默认不打包；完成后置 1。
 INCLUDE_TRANSCRIPTION=0
 APP_NAME="ChemEPlugins"
