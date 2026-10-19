@@ -14,9 +14,9 @@
 #   5) （可选）hdiutil 生成 .dmg。
 #
 # 前置条件：
-#   * ChemE-Organic Chemistry 产物：Organic Chemistry/cmake-build-release/OrganicChemistry_artefacts/Release/{VST3,AU}
-#   * ChemE-Entropy 产物：Entropy/cmake-build-release/Entropy_artefacts/Release/{VST3,AU}
-#   * ChemE-Transcription 产物：Transcription/cmake-build-release/Transcription_artefacts/Release/{VST3,AU}
+#   * ChemE-Organic Chemistry 产物：Organic Chemistry/build/OrganicChemistry_artefacts/Release/{VST3,AU}
+#   * ChemE-Entropy 产物：Entropy/build/Entropy_artefacts/Release/{VST3,AU}
+#   * ChemE-Transcription 产物：Transcription/build/Transcription_artefacts/Release/{VST3,AU}
 #   * macOS 自带 pkgbuild / productbuild / hdiutil / lipo
 #
 # 输出目录：dist/
@@ -35,18 +35,18 @@ set -euo pipefail
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # 系列安装器版本（与 Windows iss 的 MyAppVersion 一致；三款产品各自版本见其 CMakeLists）
-APP_VERSION="1.2.1"
+APP_VERSION="1.2.2"
 # 生物化学 ChemE-Transcription 尚未开发完成，默认不打包；完成后置 1。
 INCLUDE_TRANSCRIPTION=0
 APP_NAME="ChemEPlugins"
 APP_PUBLISHER="iisaacbeats.cn"
 
-OC_VST3_SRC="${SCRIPT_DIR}/Organic Chemistry/cmake-build-release/OrganicChemistry_artefacts/Release/VST3/ChemE-Organic Chemistry.vst3"
-ENTROPY_VST3_SRC="${SCRIPT_DIR}/Entropy/cmake-build-release/Entropy_artefacts/Release/VST3/ChemE-Entropy.vst3"
-TRANSCRIPTION_VST3_SRC="${SCRIPT_DIR}/Transcription/cmake-build-release/Transcription_artefacts/Release/VST3/ChemE-Transcription.vst3"
-OC_AU_SRC="$(ls -d "${SCRIPT_DIR}"/Organic\ Chemistry/cmake-build-release/OrganicChemistry_artefacts/Release/AU/*.component 2>/dev/null | head -n1 || true)"
-ENTROPY_AU_SRC="$(ls -d "${SCRIPT_DIR}"/Entropy/cmake-build-release/Entropy_artefacts/Release/AU/*.component 2>/dev/null | head -n1 || true)"
-TRANSCRIPTION_AU_SRC="$(ls -d "${SCRIPT_DIR}"/Transcription/cmake-build-release/Transcription_artefacts/Release/AU/*.component 2>/dev/null | head -n1 || true)"
+OC_VST3_SRC="${SCRIPT_DIR}/Organic Chemistry/build/OrganicChemistry_artefacts/Release/VST3/ChemE-Organic Chemistry.vst3"
+ENTROPY_VST3_SRC="${SCRIPT_DIR}/Entropy/build/Entropy_artefacts/Release/VST3/ChemE-Entropy.vst3"
+TRANSCRIPTION_VST3_SRC="${SCRIPT_DIR}/Transcription/build/Transcription_artefacts/Release/VST3/ChemE-Transcription.vst3"
+OC_AU_SRC="$(ls -d "${SCRIPT_DIR}"/Organic\ Chemistry/build/OrganicChemistry_artefacts/Release/AU/*.component 2>/dev/null | head -n1 || true)"
+ENTROPY_AU_SRC="$(ls -d "${SCRIPT_DIR}"/Entropy/build/Entropy_artefacts/Release/AU/*.component 2>/dev/null | head -n1 || true)"
+TRANSCRIPTION_AU_SRC="$(ls -d "${SCRIPT_DIR}"/Transcription/build/Transcription_artefacts/Release/AU/*.component 2>/dev/null | head -n1 || true)"
 
 DIST_DIR="${SCRIPT_DIR}/dist"
 STAGING_DIR="${SCRIPT_DIR}/.pkg_staging"
