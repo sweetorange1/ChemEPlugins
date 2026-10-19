@@ -1,8 +1,8 @@
 ; ============================================================
 ;  iisaacbeats Science Series — 组合安装脚本
-;  一个安装包同时携带 ChemE-Organic Chemistry / ChemE-Entropy /
-;  ChemE-Transcription 三款插件，安装向导中可勾选要安装的插件
-;  （默认全部安装）。
+;  当前安装包携带 ChemE-Organic Chemistry / ChemE-Entropy 两款插件，
+;  ChemE-Transcription 尚未完成（INCLUDE_TRANSCRIPTION 默认关闭）。
+;  安装向导中可勾选要安装的插件（默认全部安装）。
 ;
 ;  产物目录由 build_installer.bat 通过 -DOC_VST3_DIR /
 ;  -DENTROPY_VST3_DIR / -DTRANSCRIPTION_VST3_DIR 覆盖为实际
@@ -13,7 +13,7 @@
 ;      的 7E5B4C3D-...）不同，因此安装本包不会触发旧包的升级/卸载
 ;      流程，不会删除旧包已安装的 "Organic Chemistry.vst3" /
 ;      "Entropy.vst3"，老用户工程（引用旧插件）不受影响。
-;    - 三款插件使用 ChemE 系列的 Plugin Code / Bundle ID，
+;    - 当前两款插件使用 ChemE 系列的 Plugin Code / Bundle ID，
 ;      VST3 UID 与旧插件不同，宿主会视为独立插件，新旧共存。
 ; ============================================================
 
@@ -23,17 +23,17 @@
 #define MyEntropyBundle "ChemE-Entropy.vst3"
 #define MyTranscriptionBundle "ChemE-Transcription.vst3"
 
-; 版本号策略：系列包版本独立于组件版本，由发布时指定（当前 1.2.1）；
-; 三个组件版本号均由 build_installer.bat 从单一来源提取后经 -D 传入，
+; 版本号策略：系列包版本独立于组件版本，由发布时指定（当前 1.2.3）；
+; 组件版本号均由 build_installer.bat 从单一来源提取后经 -D 传入，
 ; 下方 #ifndef 仅为直接运行 ISCC 时的兜底默认值。
 #ifndef MyAppVersion
-  #define MyAppVersion "1.2.1"
+  #define MyAppVersion "1.2.3"
 #endif
 #ifndef OC_VERSION
   #define OC_VERSION "1.2.1"
 #endif
 #ifndef ENTROPY_VERSION
-  #define ENTROPY_VERSION "1.0.6"
+  #define ENTROPY_VERSION "1.1.0"
 #endif
 #ifndef TRANSCRIPTION_VERSION
   #define TRANSCRIPTION_VERSION "1.0.0"

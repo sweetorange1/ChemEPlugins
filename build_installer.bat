@@ -3,20 +3,20 @@ setlocal
 
 REM ============================================================
 REM  ChemEPlugins - Combined Installer Builder
-REM  Version : 1.2.1
-REM  Output  : dist\ChemEPlugins_Setup_1.2.1_x64.exe
+REM  Version : 1.2.3
+REM  Output  : dist\ChemEPlugins_Setup_1.2.3_x64.exe
 REM
-REM  同时打包 ChemE-Organic Chemistry / ChemE-Entropy /
-REM  ChemE-Transcription 三款插件的 VST3 产物，
+REM  当前只打包 ChemE-Organic Chemistry / ChemE-Entropy 两款插件；
+REM  ChemE-Transcription 尚未完成，开关默认关闭。
 REM  安装时由用户勾选安装哪款插件（默认全部安装）。
 REM
 REM  共存说明：本安装包使用独立 AppId，不会卸载旧版安装包
-REM  （Organic Chemistry 1.x 等）安装的旧插件；三款插件自改名
+REM  （Organic Chemistry 1.x 等）安装的旧插件；当前两款插件自改名
 REM  起使用新 Plugin Code / Bundle ID，与旧插件在宿主中共存。
 REM ============================================================
 
 set "APP_NAME=ChemEPlugins"
-set "APP_VERSION=1.2.1"
+set "APP_VERSION=1.2.3"
 set "SCRIPT_DIR=%~dp0"
 
 REM ---------- 组件开关 ----------
@@ -96,7 +96,7 @@ if not defined OC_VERSION set "OC_VERSION=1.2.1"
 
 set "ENTROPY_VERSION="
 for /f "tokens=3" %%V in ('findstr /b /c:"project(Entropy VERSION" "%SCRIPT_DIR%Entropy\CMakeLists.txt"') do set "ENTROPY_VERSION=%%V"
-if not defined ENTROPY_VERSION set "ENTROPY_VERSION=1.0.6"
+if not defined ENTROPY_VERSION set "ENTROPY_VERSION=1.1.0"
 
 set "TRANSCRIPTION_VERSION="
 for /f "tokens=3" %%V in ('findstr /b /c:"project(Transcription VERSION" "%SCRIPT_DIR%Transcription\CMakeLists.txt"') do set "TRANSCRIPTION_VERSION=%%V"
