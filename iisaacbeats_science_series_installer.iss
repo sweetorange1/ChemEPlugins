@@ -1,7 +1,7 @@
 ; ============================================================
 ;  iisaacbeats Science Series — 组合安装脚本
-;  当前安装包携带 ChemE-Organic Chemistry / ChemE-Entropy 两款插件，
-;  ChemE-Transcription 尚未完成（INCLUDE_TRANSCRIPTION 默认关闭）。
+;  自 1.3.0 起携带全部三款插件：
+;    ChemE-Organic Chemistry / ChemE-Entropy / ChemE-Transcription。
 ;  安装向导中可勾选要安装的插件（默认全部安装）。
 ;
 ;  产物目录由 build_installer.bat 通过 -DOC_VST3_DIR /
@@ -23,11 +23,11 @@
 #define MyEntropyBundle "ChemE-Entropy.vst3"
 #define MyTranscriptionBundle "ChemE-Transcription.vst3"
 
-; 版本号策略：系列包版本独立于组件版本，由发布时指定（当前 1.2.3）；
+; 版本号策略：系列包版本独立于组件版本，由发布时指定（当前 1.3.0）；
 ; 组件版本号均由 build_installer.bat 从单一来源提取后经 -D 传入，
 ; 下方 #ifndef 仅为直接运行 ISCC 时的兜底默认值。
 #ifndef MyAppVersion
-  #define MyAppVersion "1.2.3"
+  #define MyAppVersion "1.3.0"
 #endif
 #ifndef OC_VERSION
   #define OC_VERSION "1.2.1"
