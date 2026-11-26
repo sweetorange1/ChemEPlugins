@@ -34,8 +34,8 @@ set -euo pipefail
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-# 系列安装器版本（与 Windows iss 的 MyAppVersion 一致；三款产品各自版本见其 CMakeLists）
-APP_VERSION="1.3.0"
+# 系列安装器版本（与 Windows iss 的 MyAppVersion 一致，1.4.0 起与三款组件统一）
+APP_VERSION="1.4.0"
 # ChemE-Transcription 自 1.3.0 起纳入安装包。
 INCLUDE_TRANSCRIPTION=1
 APP_NAME="ChemEPlugins"

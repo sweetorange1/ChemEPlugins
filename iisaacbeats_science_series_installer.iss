@@ -23,20 +23,20 @@
 #define MyEntropyBundle "ChemE-Entropy.vst3"
 #define MyTranscriptionBundle "ChemE-Transcription.vst3"
 
-; 版本号策略：系列包版本独立于组件版本，由发布时指定（当前 1.3.0）；
+; 版本号策略：1.4.0 起三款插件与系列安装包统一版本号；
 ; 组件版本号均由 build_installer.bat 从单一来源提取后经 -D 传入，
 ; 下方 #ifndef 仅为直接运行 ISCC 时的兜底默认值。
 #ifndef MyAppVersion
-  #define MyAppVersion "1.3.0"
+  #define MyAppVersion "1.4.0"
 #endif
 #ifndef OC_VERSION
-  #define OC_VERSION "1.2.1"
+  #define OC_VERSION "1.4.0"
 #endif
 #ifndef ENTROPY_VERSION
-  #define ENTROPY_VERSION "1.1.0"
+  #define ENTROPY_VERSION "1.4.0"
 #endif
 #ifndef TRANSCRIPTION_VERSION
-  #define TRANSCRIPTION_VERSION "1.0.0"
+  #define TRANSCRIPTION_VERSION "1.4.0"
 #endif
 
 #ifndef OC_VST3_DIR
